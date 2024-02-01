@@ -1,4 +1,4 @@
-import db
+from utils import db
 from flask_login import UserMixin
 
 DB = db.DataBase()

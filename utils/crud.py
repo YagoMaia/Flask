@@ -1,5 +1,5 @@
-import db
-import schemas
+from utils import db, schemas
+# from utils import 
 import bcrypt
 
 DB = db.DataBase()
