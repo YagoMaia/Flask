@@ -1,8 +1,8 @@
 from flask_login import LoginManager, login_user, login_required, current_user, logout_user
 from flask import Flask, request, redirect, url_for, render_template
 import flask
-from crud import Crud_user
-from schemas import User
+from utils.crud import Crud_user
+# from utils.schemas import User
 
 
 app = Flask(__name__)
