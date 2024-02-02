@@ -20,11 +20,52 @@ class DataBase:
         self.cursor = self.connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
         
     def fetch_one(self, query:str, **kwargs):
+        try:
+            cursor = self.cursor
+            if kwargs:
+                cursor.execute(query, kwargs)
+            else:
+                cursor.execute(query)
+            self.connection.commit()
+            ret = cursor.fetchone()
+            return dict(ret)
+        except:
+            return None
+
+    def fetch_all(self, query:str, **kwargs):
+        try:
+            cursor = self.cursor
+            if kwargs:
+                cursor.execute(query, kwargs)
+            else:
+                cursor.execute(query)
+            self.connection.commit()
+            ret = cursor.fetchall()
+            return ret
+        except:
+            return None
+    
+    def insert(self, query, **kwargs):
         cursor = self.cursor
-        if kwargs:
-            cursor.execute(query, kwargs)
-        else:
-            cursor.execute(query)
-        ret = cursor.fetchone()
-        return dict(ret)
+        try:
+            if kwargs:
+                cursor.execute(query, kwargs)
+            else:
+                cursor.execute(query)
+            self.connection.commit()
+            return True
+        except:
+            return False
         
+    def delete(self, query, **kwargs):
+        cursor = self.cursor
+        try:
+            if kwargs:
+                cursor.execute(query, kwargs)
+            else:
+                cursor.execute(query)
+            self.connection.commit()
+            return True
+        except:
+            return False
+    

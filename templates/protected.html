@@ -34,18 +34,45 @@
             color: #555;
             margin-bottom: 20px;
         }
+        
+        .btn-container{
+            /* width: 50%; */
+            margin: auto;
+            padding: 8px;
+            box-sizing: border-box;
+            /* border: 1px solid #ccc; */
+            border-radius: 4px;
+        }
 
-        .logout-btn {
+        .btn {
             background-color: #f44336;
+            /* font-size: 18px; */
             color: #fff;
             padding: 10px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            width: 50%;
         }
 
-        .logout-btn:hover {
+        .btn:hover {
             background-color: #d32f2f;
+        }
+
+        #create {
+            background-color: #76e753;
+        }
+
+        #create:hover {
+            background-color: #66c748;
+        }
+
+        #delete {
+            background-color: #c4df50;
+        }
+
+        #delete:hover {
+            background-color: #a7bd44;
         }
     </style>
 </head>
@@ -53,11 +80,27 @@
         <div class="welcome-container">
             <h2>Bem vindo</h2>
             <p class="user-greeting">Você realizou seu login com sucesso, {{user.name}}!</p>
-            <a href="/logout">
-                <button class="logout-btn">
-                    Logout
-                </button>
-            </a>
+            <div class = "btn-container">
+                <a href="/new_user">
+                    <button class="btn" id = 'create'>
+                        Criar Usuário
+                    </button>
+                </a>
+            </div>
+            <div class = "btn-container">
+                <a href="/list_users">
+                    <button class="btn" id = 'delete'>
+                        Deletar Usuário
+                    </button>
+                </a>
+            </div>
+            <div class = "btn-container">
+                <a href="/logout">
+                    <button class="btn" id = 'logout'>
+                        Logout
+                    </button>
+                </a>
+            </div>
         </div>
     </body>
 </html>
