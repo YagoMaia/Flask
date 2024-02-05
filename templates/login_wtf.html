@@ -87,8 +87,13 @@
         </h3>
     </div>
     {% endif %}
-    <h1>Formulário Flask-WTF</h1>
-    <form method="POST" action="/login_wtf">
+    {% if name %}
+    <h3>Bem vindo novamente</h3>
+    <h3>{{name}}</h3>
+    {% else %}
+    <h2>Formulário Flask-WTF</h2>
+    {% endif %}
+    <form method="POST" action="/login">
         {{ form.hidden_tag() }}
         <div class = "form-group">
             {{ form.email.label }} 

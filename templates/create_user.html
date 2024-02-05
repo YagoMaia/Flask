@@ -90,17 +90,10 @@
 <body>
 
 <div class="login-container">
-    {% if alert %}
-    <div class="form-group" id="alert">
+    {% if tipo %}
+    <div class="form-group" id="{{tipo}}">
         <h3>
-            {{alert}}
-        </h3>
-    </div>
-    {% endif %}
-    {% if sucess %}
-    <div class="form-group" id="sucess">
-        <h3>
-            {{sucess}}
+            {{mensagem}}
         </h3>
     </div>
     {% endif %}

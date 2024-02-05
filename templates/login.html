@@ -70,7 +70,12 @@
 <body>
 
 <div class="login-container">
+    {% if name %}
+    <h3>Bem vindo novamente</h3>
+    <h3>{{name}}</h3>
+    {% else %}
     <h2>Login</h2>
+    {% endif %}
     <form class="login-form" action="/login" method="post">
         <div class="form-group">
             <label for="email">Email:</label>

@@ -5,6 +5,9 @@ db_name = 'flask'
 db_password = 'postgres'
 
 class Singleton:
+    """
+    Classe responsável por deixar apenas uma isntância existênte, não irá criar outra conexão com banco
+    """
     def __init__(self, klass):
         self.klass = klass
         self.instance = None
@@ -20,6 +23,9 @@ class DataBase:
         self.cursor = self.connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
         
     def fetch_one(self, query:str, **kwargs):
+        """
+        Função responsável por retorna uma linha da consulta
+        """
         try:
             cursor = self.cursor
             if kwargs:
@@ -29,10 +35,13 @@ class DataBase:
             self.connection.commit()
             ret = cursor.fetchone()
             return dict(ret)
-        except:
+        except Exception as error:
             return None
 
     def fetch_all(self, query:str, **kwargs):
+        """
+        Função responsável por retornar todas as linhas da consulta
+        """
         try:
             cursor = self.cursor
             if kwargs:
@@ -42,10 +51,13 @@ class DataBase:
             self.connection.commit()
             ret = cursor.fetchall()
             return ret
-        except:
+        except Exception as error:
             return None
     
     def insert(self, query, **kwargs):
+        """
+        Função responsável por indicar se foi inserido ou não no banco de dados
+        """
         cursor = self.cursor
         try:
             if kwargs:
@@ -58,6 +70,9 @@ class DataBase:
             return False
         
     def delete(self, query, **kwargs):
+        """
+        Função responsável por indicar se foi deletado ou não no banco de dados
+        """
         cursor = self.cursor
         try:
             if kwargs:
