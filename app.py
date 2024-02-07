@@ -1,11 +1,19 @@
 from flask_login import LoginManager, login_user, login_required, current_user, logout_user
 from flask import Flask, request, redirect, url_for, render_template
+from flask_redis import FlaskRedis
+from redis import Redis
 from utils.crud import Crud_user
-from utils.schemas import MyForm, FormNewWuser
+from utils.schemas import MyForm, FormNewWuser, User
 
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+
+app.config['REDIS_HOST'] = 'localhost'
+app.config['REDIS_PORT'] = 6379
+app.config['REDIS_DB'] = 0
+
+redis_client = FlaskRedis(app, decode_responses = True)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -18,7 +26,8 @@ def load_user(user_id):
     Paramêtros:
         user_id: Id do usuário para ser verificado
     """
-    return Crud_user.get_user_by_id(user_id)
+    data_encode = redis_client.hgetall(f"User:{user_id}")
+    return User(**data_encode)
 
 @app.route("/")
 def index():
@@ -35,23 +44,6 @@ def wellcome_user(user_id):
     user = Crud_user.get_user_by_id(user_id)
     return f"Bem vindo, {user.name}"
 
-# @app.route("/login", methods = ['GET','POST'])
-# def login():
-#     """
-#     Função responsável pelo login sem o formulário WTF
-#     """
-#     if request.method == 'GET':
-#         try:
-#             return render_template("login.html", name = current_user.name)
-#         except: 
-#             return render_template("login.html")
-#     else:
-#         user = Crud_user.verify_user(request.form['email'], request.form['password'])
-#         if user:
-#             login_user(user)
-#             return redirect(url_for('protected'))
-#         return redirect(url_for("login")) #Se senha for incorreta pode colocar um alert 
-
 @app.route("/login", methods = ['GET','POST'])
 def login_wtf():
     """
@@ -59,8 +51,10 @@ def login_wtf():
     """
     form = MyForm()
     if form.validate_on_submit():
-        user = Crud_user.verify_user(form.email.data, form.password.data)
-        if user:
+        row = Crud_user.verify_user(form.email.data, form.password.data)
+        if row:
+            redis_client.hset(f"User:{row['id']}", mapping = row)
+            user = User(**row)
             login_user(user)
             return redirect(url_for('protected'))
         return render_template("login_wtf.html", form = form, alert = "Dados incorretos")
@@ -111,9 +105,9 @@ def list_users():
     tipo = request.args.get('tipo')
     match tipo:
         case 'sucess':
-            mensagem = "Erro ao deletar usuário"
-        case 'alert':
             mensagem = "Usuário deletado com suceso"
+        case 'alert':
+            mensagem = "Erro ao deletar usuário"
         case 'invalid':
             mensagem = "O usuário não pode se deletar do sistema"
         case None:
@@ -156,5 +150,6 @@ def logout():
     """
     Rota responsável por realizar o logout do usuário
     """
+    redis_client.delete(f"User:{current_user.id}")
     logout_user()
     return render_template("logout.html")

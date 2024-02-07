@@ -50,7 +50,7 @@ class Crud_user:
         if row:
             user = schemas.User(**row)
             if security.check_password(password, user.hash_password):
-                return user
+                return row
             return None
         return None
     
