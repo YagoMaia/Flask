@@ -1,0 +1,119 @@
+body {
+    text-align: justify;
+}
+
+.btn-primary {
+    background-color: #95a4d3;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #a7b4e0;
+    transition: 0.5s;
+    opacity: 1;
+}
+
+.acoes {
+    margin-left: 5px; 
+    margin-right: 5px; 
+    color:#95a4d3;
+}
+
+.acoes:hover {
+    color: #a7b4e0;
+    transition: 0.5s;
+    opacity: 1;
+}
+
+.modal-header {
+    background-color: #f8f9fc;
+}
+
+.modal-footer {
+    background-color: #f8f9fc;
+}
+
+.perfil-container {
+    display: flex;
+}
+
+.input-invalidation {
+    color: red;
+    margin: auto;
+    font-size: 13px;
+}
+
+.input-validation {
+    color: #386cb9;
+    margin: auto;
+    font-size: 13px;
+}
+
+.tooltip {
+    position: absolute;
+    text-align: center;
+    padding: 4px;
+    font-size: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.color-grid {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.color-square {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+}
+
+.red {
+    background-color: red;
+}
+
+.green {
+    background-color: green;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.black {
+    background-color: black;
+}
+
+.color-name {
+    margin-left: 5px;
+}
+
+.span-input-cadastro {
+    width: 25%;
+}
+
+#bolsistas td {
+    padding: 10px;
+}
+
+#fixedDiv {
+    /*position: fixed;*/
+    /* Set the position to fixed */
+    top: 70px;
+    /* Stick to the top of the viewport */
+    left: 0px;
+    /* Stick to the left of the viewport */
+    width: 100%;
+    text-align: left;
+    font-weight: bold;
+    font-size: 14px;
+    background: #91b0d0;
+    color: var(--bs-body-bg);
+    transform: rotate(-0deg);
+    transform-origin: 0 0;
+    /* Set the transform origin to the top-left corner */
+}

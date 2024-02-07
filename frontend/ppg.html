@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <title>Dashboard - Sistema Tarrafa</title>
+    <link rel="shortcut icon" href="assets/img/favicon/favicon_tarrafa.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/Nunito.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/css/legend.css">
+    <link rel="stylesheet" href="/assets/css/rSlider.min.css">
+    <link type="text/css" rel="stylesheet" href="/assets/css/waitMe.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body id="page-top">
+    <div id="fixedDiv">
+        <span style="font-family: Nunito, sans-serif; padding-left: 50px;">Versão Beta</span>
+    </div>
+    <div id="wrapper">
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+
+                <nav class="navbar navbar-expand fixed-top bg-white shadow mb-4 topbar static-top navbar-light">
+                    <div class="container-fluid">
+                        <a href="#" onclick="selectIndex(this)"><img src="assets/img/icons/logo_tarrafa_text.png"
+                                alt="home" height="37"></a>
+
+                        <ul class="navbar-nav ml-auto">
+                            <!--li class="nav-item m-auto">
+                                <select id="list-programs" class="form-select" onChange="selectPPG(this);"></select>
+                            </li-->
+                            <div class="d-none d-sm-block topbar-divider"></div>
+                            <li class="nav-item m-auto">
+                                <div class="dropdown no-arrow">
+                                    <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown"
+                                        href="#">
+                                        <span class="d-none d-lg-inline me-2 text-gray-600 small"
+                                            id="nome-usuario">Usuário</span>
+                                        <img class="border rounded-circle img-profile" id="avatar-usuario"
+                                            src="/assets/img/avatars/avatar1.jpeg" />
+                                    </a>
+                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
+                                        <div id="menu">
+                                            
+                                        </div>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#" id="logout"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i> Logout</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="container-fluid" style="margin-top: 60px;">
+                    <!--div class="d-sm-flex justify-content-between align-items-center mb-4">
+                        <h3 class="text-dark mb-0" id="nome-ppg" hidden>...</h3>
+                        <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#" style="background-color: #2e3192;">
+                            <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a>
+                    </div-->
+
+
+                    <div class="row" id="row-info">
+
+                        <div class="col">
+                            <div class="row" style="font-size:12px;">
+                                <strong>Selecione um intervalo de avaliação:</strong>
+                            </div>
+                            <div class="row p-4">
+                                <input type="text" id="slider-ppg-geral" class="slider">
+                            </div>
+
+                            <div class="row p-4" style="font-size:12px;">
+                                <ul class="nav nav-pills nav-fill" id="myTab" role="tablist">
+                                    
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="indicadores-tab" data-bs-toggle="tab"
+                                            data-bs-target="#indicadores" type="button" role="tab"
+                                            aria-controls="indicadores" aria-selected="false">Indicadores</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="docentes-tab" data-bs-toggle="tab"
+                                            data-bs-target="#docentes" type="button" role="tab" aria-controls="docentes"
+                                            aria-selected="false">Docentes</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="projetos-tab" data-bs-toggle="tab"
+                                            data-bs-target="#projetos" type="button" role="tab" aria-controls="projetos"
+                                            aria-selected="false">Linhas de Pesquisa e Projetos</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="indprod-tab" data-bs-toggle="tab"
+                                            data-bs-target="#bancas" type="button" role="tab" aria-controls="bancas"
+                                            aria-selected="true">Bancas e TCCs</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="indprod-tab" data-bs-toggle="tab"
+                                            data-bs-target="#egressos" type="button" role="tab" aria-controls="egressos"
+                                            aria-selected="true">Egressos</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="indprod-tab" data-bs-toggle="tab"
+                                            data-bs-target="#simulacao-indprod" type="button" role="tab"
+                                            aria-controls="simulacao-indprod" aria-selected="true">Simulações</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                        <div class="col-4 mb-4">
+                            <div class="card" style="border-radius: 0%; border: none;">
+                                <!-- <div style="min-height: 5px; background: #91b0d0"></div> -->
+                                <div class="card-body">
+                                    <div class="card-title text-black">
+                                        <h6 id="nome-sigla">...</h6>
+                                        <h8>Conceito: <span id="nota">...</span></h8>
+                                    </div>
+                                    <p style="font-size:11px;" id="info">...
+                                    <p>
+                                    <div class="row justify-content-evenly">
+                                        <div class="col">
+                                            <span style="font-size:11px;" id="url">...</span>
+                                        </div>
+                                        <div class="col" hidden>
+                                            <span style="font-size:11px;" id="email">...</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div style="width: 100%; color: var(--bs-secondary-text-emphasis);">
+                            <div class="mt-4 mb-4 card">
+                                <div class="d-flex flex-row h-100">
+                                    <div class="align-self-stretch px-1" style="background-color: #91b0d0">
+                                        <h2 class="mt-3" style="color: rgb(255, 255, 255);" id="nota">...</h2>
+                                    </div>
+                                    <div class="d-flex flex-column ml-3 mr-3">
+                                        <div class="mt-3" style="flex: 1 1 0%;">
+                                            <div
+                                                style="padding: 10px; text-align: justify; font-size: 12px; color: var(--bs-secondary-text-emphasis);">
+                                                <h5 id="nome-sigla">...</h5>
+                                                <p id="info">...</p>
+                                                <p id="url">...</p>
+                                                <p id="email">...</p>
+                                                <p id="nota">...</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+
+                    </div>
+
+
+
+
+
+                    <div>
+                        <div class="tab-content" id="myTabContent">
+                            
+                            <div class="tab-pane fade show active" id="indicadores" role="tabpanel"
+                                aria-labelledby="indicadores-tab">
+
+                                <div class="row" id="row-qualis">
+                                    <div class="col-xl-6 col-lg-6" id="col-qualis">
+                                        <div class="card mb-4" style="height: 469px;">
+                                            <div class="card-header d-flex justify-content-between align-items-center">
+                                                <div style="width: 100%;">
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-auto">
+                                                            <h6 id="modaltitlechartqualisproductions"
+                                                                class="text-primary fw-bold m-0">Produções com
+                                                                Qualis</h6>
+                                                        </div>
+                                                        <div class="col text-end">
+                                                            <div class="dropdown no-arrow">
+                                                                <button class="btn btn-link btn-sm dropdown-toggle"
+                                                                    aria-expanded="false" data-bs-toggle="dropdown"
+                                                                    type="button"><i
+                                                                        class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                                                <div
+                                                                    class="dropdown-menu shadow dropdown-menu-end animated--fade-in">
+                                                                    <p class="text-center dropdown-header">
+                                                                        Opções:</p>
+                                                                    <a class="dropdown-item open-chart-modal"
+                                                                        id="saveGraph-2" href="#"
+                                                                        data-value="chartqualisproductions">&nbsp;Ampliar</a>
+                                                                    <div class="dropdown-divider"></div>
+                                                                    <a class="dropdown-item a-pointer"
+                                                                        onclick="SaveChart('chartqualisproductions')">&nbsp;<i
+                                                                            class="fa fa-download"></i> Download
+                                                                        gráfico</a>
+                                                                    <a class="dropdown-item a-pointer"
+                                                                        onclick="ExportToExcel('/api/dados/ppg/indicadores/artigosqualis', 'chartqualisproductions')">&nbsp;<i
+                                                                            class="far fa-file-excel"></i>
+                                                                        Exportar para .xlsx</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col"><sub style="font-size: 11px;">Este
+                                                                gráfico apresenta
+                                                                quantidade de artigos em periódicos (com qualis)
+                                                                dos docentes permanentes do programa.<br>A última coluna
+                                                                apresenta a produção coletada dos currículos
+                                                                Lattes.</sub></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body" style="height: 397px;">
+                                                <canvas class="chart-area" id="chartqualisproductions"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6" id="col-indprod">
+                                        <div class="card mb-4" style="height: 469px;">
+                                            <div class="card-header d-flex justify-content-between align-items-center">
+                                                <div style="width: 100%;">
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-auto">
+                                                            <h6 id="modaltitlechartindprodsproductions"
+                                                                class="text-primary fw-bold m-0">IndProd Artigos</h6>
+                                                        </div>
+                                                        <div class="col text-end">
+                                                            <div class="dropdown no-arrow">
+                                                                <button class="btn btn-link btn-sm dropdown-toggle"
+                                                                    aria-expanded="false" data-bs-toggle="dropdown"
+                                                                    type="button"><i
+                                                                        class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                                                <div
+                                                                    class="dropdown-menu shadow dropdown-menu-end animated--fade-in">
+                                                                    <p class="text-center dropdown-header">
+                                                                        Opções:</p>
+                                                                    <a class="dropdown-item open-chart-modal"
+                                                                        id="saveGraph-2" href="#"
+                                                                        data-value="chartindprodsproductions">&nbsp;Ampliar</a>
+                                                                    <div class="dropdown-divider"></div>
+                                                                    <a class="dropdown-item a-pointer"
+                                                                        onclick="SaveChart('chartindprodsproductions')">&nbsp;<i
+                                                                            class="fa fa-download"></i> Download
+                                                                        gráfico</a>
+                                                                    <a class="dropdown-item a-pointer"
+                                                                        onclick="ExportToExcel('/api/dados/ppg/indicadores/indprodart', 'chartindprodsproductions')">&nbsp;<i
+                                                                            class="far fa-file-excel"></i>
+                                                                        Exportar para .xlsx</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col"><sub style="font-size: 11px;">Este
+                                                                gráfico apresenta
+                                                                o indProdArt
+                                                                comparado ao indProdArt médio de outros PPGs.<br>
+                                                                <span id="formula_indprod">IndProdArt = (1*A1 + 0,875*A2
+                                                                    + 0,75*A3
+                                                                    + 0,625*A4 + 0,5*B1
+                                                                    + 0,375*B2 + 0,25*B3 + 0,125*B4)/DP</span></sub>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body" style="height: 397px;">
+                                                <canvas class="chart-area" id="chartindprodsproductions"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- <div id="tabela-indprods" class="table-responsive" style="text-align: center;">
+                                    <table class="table table-striped table-sm table-bordered">
+                                        <thead style="background: var(--bs-focus-ring-color);">
+                                            <tr style="background: var(--bs-focus-ring-color);">
+                                                <th style="background: #f8f9fc;color: var(--bs-blue);">Indicadores no
+                                                    período</th>
+                                                <th style="background: #f8f9fc;color: var(--bs-blue);">PPG</th>
+                                                <th style="background: #f8f9fc;color: var(--bs-blue);">Notas 3</th>
+                                                <th style="background: #f8f9fc;color: var(--bs-blue);">Notas 4</th>
+                                                <th style="background: #f8f9fc;color: var(--bs-blue);">Notas 5</th>
+                                                <th style="background: #f8f9fc;color: var(--bs-blue);">MG</th>
+                                                <th style="background: #f8f9fc;color: var(--bs-blue);">Sudeste</th>
+                                                <th style="background: #f8f9fc;color: var(--bs-blue);">Brasil</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="color: var(--bs-light-text-emphasis);">Média ponderada de
+                                                    indProdArt por DP</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 2</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 1<svg
+                                                        class="bi bi-arrow-up-short" xmlns="http://www.w3.org/2000/svg"
+                                                        width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16"
+                                                        style="color: var(--bs-blue);">
+                                                        <path fill-rule="evenodd"
+                                                            d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z">
+                                                        </path>
+                                                    </svg></td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 2<svg
+                                                        class="bi bi-arrow-down-short"
+                                                        xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                                        fill="currentColor" viewBox="0 0 16 16"
+                                                        style="color: var(--bs-red);">
+                                                        <path fill-rule="evenodd"
+                                                            d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z">
+                                                        </path>
+                                                    </svg></td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 1</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 2</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 1</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 2</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="color: var(--bs-light-text-emphasis);">Média ponderada de
+                                                    indProdArt com discentes e egressos por DP</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="color: var(--bs-light-text-emphasis);">Quantidade média de
+                                                    artigos A1 à A4 por DP</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="color: var(--bs-light-text-emphasis);">Quantidade média de
+                                                    artigos A1 à A4 por PPG</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="color: var(--bs-light-text-emphasis);">Quantidade média de
+                                                    artigos A1 à A4 com discentes e egressos por DP</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="color: var(--bs-light-text-emphasis);">Quantidade média de
+                                                    artigos A1 à A4 com discentes e egressos por PPG</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div> -->
+
+                                <div class="row" id="row-positionindprods">
+                                    <div class="col-xl-8 col-lg-8">
+                                        <div class="card mb-4" style="height: 450px;">
+                                            <div class="card-header d-flex justify-content-between align-items-center">
+                                                <div style="width: 100%;">
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-auto">
+                                                            <h6 class="text-primary fw-bold m-0">Posicionamento
+                                                                do PPG em relação a
+                                                                outros da mesma área de avaliação</h6>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <sub style="font-size: 11px;"
+                                                                id="text-chartpositionindprod">Comparação
+                                                                do indicador Média ponderada de artigos
+                                                                (IndArtigo) por DPs e por
+                                                                ano do PPG com os programas nota 6 no período de
+                                                                2021 - 2022</sub>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="color-grid">
+                                                        <div class="color-square black"></div>
+                                                        <i class="bi bi-stop-fill text-dark"></i>
+                                                        <span class="color-name"
+                                                            style="margin-left: -18px; margin-right: 20px; font-size: 12px;">UNIMONTES</span>
+                                                        <div class="color-square blue"></div>
+                                                        <i class="bi bi-stop-fill text-success"></i>
+                                                        <span class="color-name"
+                                                            style="margin-left: -18px; margin-right: 20px; font-size: 12px;">IES
+                                                            Estadual</span>
+                                                        <div class="color-square green"></div>
+                                                        <i class="bi bi-stop-fill text-primary"></i>
+                                                        <span class="color-name"
+                                                            style="margin-left: -18px; margin-right: 20px; font-size: 12px;">IES
+                                                            Federal</span>
+                                                        <div class="color-square red"></div>
+                                                        <i class="bi bi-stop-fill text-danger"></i>
+                                                        <span class="color-name"
+                                                            style="margin-left: -18px; margin-right: 20px; font-size: 12px;">IES
+                                                            Particular</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body"><canvas class="chart-area"
+                                                    id="chartpositionindprods"></canvas>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lx-4 col-lg-4 text-center">
+                                        <svg id="mapa_brasil"></svg>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-6" id="row-tempodefesa">
+                                        <div class="card mb-4" style="width: 100%;height: 367.667px;">
+                                            <div class="card-header d-flex justify-content-between align-items-center">
+                                                <h6 id="modaltitlecarttempodefesa" class="text-primary fw-bold m-0">
+                                                    Tempo de Defesa (em meses)
+                                                </h6>
+                                                <div class="dropdown no-arrow">
+                                                    <button class="btn btn-link btn-sm dropdown-toggle"
+                                                        aria-expanded="false" data-bs-toggle="dropdown" type="button"><i
+                                                            class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                                    <div
+                                                        class="dropdown-menu shadow dropdown-menu-end animated--fade-in">
+                                                        <p class="text-center dropdown-header">Opções:</p>
+                                                        <a class="dropdown-item open-chart-modal" id="saveGraph-1"
+                                                            href="#" data-value="carttempodefesa">&nbsp;Ampliar</a>
+                                                        <div class="dropdown-divider"></div>
+                                                        <a class="dropdown-item a-pointer"
+                                                            onclick="SaveChart('carttempodefesa')">&nbsp;<i
+                                                                class="fa fa-download"></i> Download gráfico</a>
+                                                        <a class="dropdown-item a-pointer"
+                                                            onclick="ExportToExcel('/api/dados/ppg/indicadores/tempo/conclusoes', 'carttempodefesa')">&nbsp;<i
+                                                                class="far fa-file-excel"></i> Exportar para
+                                                            .xlsx</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body" style="height: 320px;"><canvas class="chart-area"
+                                                    id="carttempodefesa"></canvas></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6">
+                                        <div class="card mb-4" id='col-disctit' style="width: 100%;height: 367.667px;">
+                                            <div class="card-header d-flex justify-content-between align-items-center">
+                                                <h6 id="modaltitlechartstudentsgraduated"
+                                                    class="text-primary fw-bold m-0">Quantidade de Discentes
+                                                    Titulados</h6>
+                                                <div class="dropdown no-arrow">
+                                                    <button class="btn btn-link btn-sm dropdown-toggle"
+                                                        aria-expanded="false" data-bs-toggle="dropdown" type="button"><i
+                                                            class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                                    <div
+                                                        class="dropdown-menu shadow dropdown-menu-end animated--fade-in">
+                                                        <p class="text-center dropdown-header">Opções:</p>
+                                                        <a class="dropdown-item open-chart-modal" href="#"
+                                                            data-value="chartstudentsgraduated">&nbsp;Ampliar</a>
+                                                        <div class="dropdown-divider"></div>
+                                                        <a class="dropdown-item a-pointer"
+                                                            onclick="SaveChart('chartstudentsgraduated')">&nbsp;<i
+                                                                class="fa fa-download"></i> Download gráfico</a>
+                                                        <a class="dropdown-item a-pointer"
+                                                            onclick="ExportToExcel('/api/dados/prp/geral/discentes/titulados', 'chartstudentsgraduated')">&nbsp;<i
+                                                                class="far fa-file-excel"></i> Exportar para
+                                                            .xlsx</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body" style="height: 172.5px;"><canvas class="chart-area"
+                                                    id="chartstudentsgraduated"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-6" id="col-partdiss">
+                                        <div class="card mb-4">
+                                            <div class="card-header d-flex justify-content-between align-items-center">
+                                                <div style="width: 100%;">
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-auto">
+                                                            <h6 id="modaltitlechartpartdis"
+                                                                class="text-primary fw-bold m-0">PartDis
+                                                                (comparado com outros PPGs)
+                                                            </h6>
+                                                        </div>
+                                                        <div class="col text-end">
+                                                            <div class="dropdown no-arrow">
+                                                                <button class="btn btn-link btn-sm dropdown-toggle"
+                                                                    aria-expanded="false" data-bs-toggle="dropdown"
+                                                                    type="button"><i
+                                                                        class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                                                <div
+                                                                    class="dropdown-menu shadow dropdown-menu-end animated--fade-in">
+                                                                    <p class="text-center dropdown-header">
+                                                                        Opções:</p>
+                                                                    <a class="dropdown-item open-chart-modal"
+                                                                        id="saveGraph-3" href="#"
+                                                                        data-value="chartpartdis">&nbsp;Ampliar</a>
+                                                                    <div class="dropdown-divider"></div>
+                                                                    <a class="dropdown-item a-pointer"
+                                                                        onclick="SaveChart('chartpartdis')">&nbsp;<i
+                                                                            class="fa fa-download"></i> Download
+                                                                        gráfico</a>
+                                                                    <a class="dropdown-item a-pointer"
+                                                                        onclick="ExportToExcel('/api/dados/prp/geral/partdis/avg', 'chartpartdis')">&nbsp;<i
+                                                                            class="far fa-file-excel"></i>
+                                                                        Exportar para .xlsx</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col"><sub style="font-size: 10px;">=
+                                                                IndProdDis/IndProd<br>Avalia a participação da
+                                                                produção discente na
+                                                                produção de artigos do programa.</sub></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body" style="height: 230px;"><canvas class="chart-area"
+                                                    id="chartpartdis"></canvas></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6" id="col-indcoautorias">
+                                        <div class="card mb-4">
+                                            <div class="card-header d-flex justify-content-between align-items-center">
+                                                <div style="width: 100%;">
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-auto">
+                                                            <h6 id="modaltitlechartindcoautoria"
+                                                                class="text-primary fw-bold m-0">Coautoria
+                                                                (comparado com outros
+                                                                PPGs)</h6>
+                                                        </div>
+                                                        <div class="col text-end">
+                                                            <div class="dropdown no-arrow">
+                                                                <button class="btn btn-link btn-sm dropdown-toggle"
+                                                                    aria-expanded="false" data-bs-toggle="dropdown"
+                                                                    type="button"><i
+                                                                        class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                                                <div
+                                                                    class="dropdown-menu shadow dropdown-menu-end animated--fade-in">
+                                                                    <p class="text-center dropdown-header">
+                                                                        Opções:</p>
+                                                                    <a class="dropdown-item open-chart-modal"
+                                                                        id="saveGraph-8" href="#"
+                                                                        data-value="chartindcoautoria">&nbsp;Ampliar</a>
+                                                                    <div class="dropdown-divider"></div>
+                                                                    <a class="dropdown-item a-pointer"
+                                                                        onclick="SaveChart('chartindcoautoria')">&nbsp;<i
+                                                                            class="fa fa-download"></i> Download
+                                                                        gráfico</a>
+                                                                    <a class="dropdown-item a-pointer"
+                                                                        onclick="ExportToExcel('/api/dados/prp/geral/indcoautoria/avg', 'chartindcoautoria')">&nbsp;<i
+                                                                            class="far fa-file-excel"></i>
+                                                                        Exportar para .xlsx</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col"><sub style="font-size: 10px;">=
+                                                                IndProdCoautor/IndProd<br>Avalia a coautoria de
+                                                                artigos com dois ou
+                                                                mais docentes e pelo menos um docente
+                                                                permanente.</sub></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body" style="height: 230px;"><canvas class="chart-area"
+                                                    id="chartindcoautoria"></canvas></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-6" id="col-indori">
+                                        <div class="card mb-4">
+                                            <div class="card-header d-flex justify-content-between align-items-center">
+                                                <div style="width: 100%;">
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-auto">
+                                                            <h6 id="modaltitlechartindori"
+                                                                class="text-primary fw-bold m-0">IndOri
+                                                                (comparado com outros PPGs)
+                                                            </h6>
+                                                        </div>
+                                                        <div class="col text-end">
+                                                            <div class="dropdown no-arrow">
+                                                                <button class="btn btn-link btn-sm dropdown-toggle"
+                                                                    aria-expanded="false" data-bs-toggle="dropdown"
+                                                                    type="button"><i
+                                                                        class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                                                <div
+                                                                    class="dropdown-menu shadow dropdown-menu-end animated--fade-in">
+                                                                    <p class="text-center dropdown-header">
+                                                                        Opções:</p>
+                                                                    <a class="dropdown-item open-chart-modal"
+                                                                        id="saveGraph-6" href="#"
+                                                                        data-value="chartindori">&nbsp;Ampliar</a>
+                                                                    <div class="dropdown-divider"></div>
+                                                                    <a class="dropdown-item a-pointer"
+                                                                        onclick="SaveChart('chartindori')">&nbsp;<i
+                                                                            class="fa fa-download"></i> Download
+                                                                        gráfico</a>
+                                                                    <a class="dropdown-item a-pointer"
+                                                                        onclick="ExportToExcel('/api/dados/prp/geral/indori/avg', 'chartindori')">&nbsp;<i
+                                                                            class="far fa-file-excel"></i>
+                                                                        Exportar para .xlsx</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col"><sub style="font-size: 10px;">= (A
+                                                                +2B)/DP, onde A =
+                                                                mestrados em 24 meses e B = doutorados em 48
+                                                                meses<br>Avalia as
+                                                                defesas com orientação de docentes permanentes
+                                                                (DP) do
+                                                                programa</sub></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body" style="height: 250px;"><canvas class="chart-area"
+                                                    id="chartindori"></canvas></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6" id="col-inddistori">
+                                        <div class="card mb-4">
+                                            <div class="card-header d-flex justify-content-between align-items-center">
+                                                <div style="width: 100%;">
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-auto">
+                                                            <h6 id="modaltitlechartinddistori"
+                                                                class="text-primary fw-bold m-0">IndDistOri
+                                                                (comparado com outros
+                                                                PPGs)</h6>
+                                                        </div>
+                                                        <div class="col text-end">
+                                                            <div class="dropdown no-arrow">
+                                                                <button class="btn btn-link btn-sm dropdown-toggle"
+                                                                    aria-expanded="false" data-bs-toggle="dropdown"
+                                                                    type="button"><i
+                                                                        class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                                                <div
+                                                                    class="dropdown-menu shadow dropdown-menu-end animated--fade-in">
+                                                                    <p class="text-center dropdown-header">
+                                                                        Opções:</p>
+                                                                    <a class="dropdown-item open-chart-modal"
+                                                                        id="saveGraph-4" href="#"
+                                                                        data-value="chartinddistori">&nbsp;Ampliar</a>
+                                                                    <div class="dropdown-divider"></div>
+                                                                    <a class="dropdown-item a-pointer"
+                                                                        onclick="SaveChart('chartinddistori')">&nbsp;<i
+                                                                            class="fa fa-download"></i> Download
+                                                                        gráfico</a>
+                                                                    <a class="dropdown-item a-pointer"
+                                                                        onclick="ExportToExcel('/api/dados/prp/geral/inddistori/avg', 'chartinddistori')">&nbsp;<i
+                                                                            class="far fa-file-excel"></i>
+                                                                        Exportar para .xlsx</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col"><sub style="font-size: 10px;">= DP que
+                                                                concluíram
+                                                                orientações no ano /DP<br>Avalia a distribuição
+                                                                das orientações
+                                                                concluídas em relação ao corpo docente
+                                                                permanente.</sub></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body" style="height: 250px;"><canvas class="chart-area"
+                                                    id="chartinddistori"></canvas></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-6" id="col-indaut">
+                                        <div class="card mb-4">
+                                            <div class="card-header d-flex justify-content-between align-items-center">
+                                                <div style="width: 100%;">
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-auto">
+                                                            <h6 id="modaltitlechartindaut"
+                                                                class="text-primary fw-bold m-0">IndAut
+                                                                (comparado com outros PPGs)
+                                                            </h6>
+                                                        </div>
+                                                        <div class="col text-end">
+                                                            <div class="dropdown no-arrow">
+                                                                <button class="btn btn-link btn-sm dropdown-toggle"
+                                                                    aria-expanded="false" data-bs-toggle="dropdown"
+                                                                    type="button"><i
+                                                                        class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                                                <div
+                                                                    class="dropdown-menu shadow dropdown-menu-end animated--fade-in">
+                                                                    <p class="text-center dropdown-header">
+                                                                        Opções:</p>
+                                                                    <a class="dropdown-item open-chart-modal"
+                                                                        id="saveGraph-7" href="#"
+                                                                        data-value="chartindaut">&nbsp;Ampliar</a>
+                                                                    <div class="dropdown-divider"></div>
+                                                                    <a class="dropdown-item a-pointer"
+                                                                        onclick="SaveChart('chartindaut')">&nbsp;<i
+                                                                            class="fa fa-download"></i> Download
+                                                                        gráfico</a>
+                                                                    <a class="dropdown-item a-pointer"
+                                                                        onclick="ExportToExcel('/api/dados/prp/geral/indaut/avg', 'chartindaut')">&nbsp;<i
+                                                                            class="far fa-file-excel"></i>
+                                                                        Exportar para .xlsx</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col"><sub style="font-size: 10px;">= E/F,
+                                                                onde E = discentes
+                                                                autores e F = corpo discente + egressos 5
+                                                                anos<br>Índice de
+                                                                discentes autores. Considera todos os produtos
+                                                                menos apresentação de
+                                                                trabalhos.</sub></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body" style="height: 250px;"><canvas class="chart-area"
+                                                    id="chartindaut"></canvas></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6" id="col-inddis">
+                                        <div class="card mb-4">
+                                            <div class="card-header d-flex justify-content-between align-items-center">
+                                                <div style="width: 100%;">
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-auto">
+                                                            <h6 id="modaltitlechartinddis"
+                                                                class="text-primary fw-bold m-0">IndDis
+                                                                (comparado com outros PPGs)
+                                                            </h6>
+                                                        </div>
+                                                        <div class="col text-end">
+                                                            <div class="dropdown no-arrow">
+                                                                <button class="btn btn-link btn-sm dropdown-toggle"
+                                                                    aria-expanded="false" data-bs-toggle="dropdown"
+                                                                    type="button"><i
+                                                                        class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                                                <div
+                                                                    class="dropdown-menu shadow dropdown-menu-end animated--fade-in">
+                                                                    <p class="text-center dropdown-header">
+                                                                        Opções:</p>
+                                                                    <a class="dropdown-item open-chart-modal"
+                                                                        id="saveGraph-5" href="#"
+                                                                        data-value="chartinddis">&nbsp;Ampliar</a>
+                                                                    <div class="dropdown-divider"></div>
+                                                                    <a class="dropdown-item a-pointer"
+                                                                        onclick="SaveChart('chartinddis')">&nbsp;<i
+                                                                            class="fa fa-download"></i> Download
+                                                                        gráfico</a>
+                                                                    <a class="dropdown-item a-pointer"
+                                                                        onclick="ExportToExcel('/api/dados/prp/geral/inddis/avg', 'chartinddis')">&nbsp;<i
+                                                                            class="far fa-file-excel"></i>
+                                                                        Exportar para .xlsx</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col"><sub style="font-size: 10px;">= G/F,
+                                                                onde G = quantidade de
+                                                                produtos e F = corpo discente + egressos 5
+                                                                anos&nbsp;<br>Índice de
+                                                                produtos com autoria discente. Todos os produtos
+                                                                menos apresentação
+                                                                de trabalhos.</sub></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body" style="height: 250px;"><canvas class="chart-area"
+                                                    id="chartinddis"></canvas></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="docentes" role="tabpanel" aria-labelledby="docentes-tab">
+
+                                <div class="row" id="row-professores">
+                                    <div class="col-lg-6 mb-4" style="width: 100%;">
+                                        <div class="card mb-4" style="width: auto;">
+                                            <div class="card-header py-3">
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <h6 class="text-primary fw-bold m-0" id="text-professores">
+                                                            Professores</h6>
+                                                        <p><strong>FONTE:</strong> Lattes e Sucupira</p>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="container" style="font-size: 11px;">
+                                                            <div class="row">
+                                                                <div class="col-12 col-md-2 p-0">
+                                                                    <div class="icon-label">
+                                                                        <span class="small"><strong><u>
+                                                                                    Atualização do
+                                                                                    Lattes:
+                                                                                </u></strong></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-md-2 p-0">
+                                                                    <div class="icon-label">
+                                                                        <i class="fas fa-exclamation-circle"
+                                                                            style="color: #ff91a9;"></i>
+                                                                        <span class="small"><strong>+12
+                                                                                meses</strong></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-md-2 p-0">
+                                                                    <div class="icon-label">
+                                                                        <i class="fas fa-exclamation-circle"
+                                                                            style="color: #72bef1;"></i>
+                                                                        <span class="small"><strong>entre 8 e 12
+                                                                                meses</strong></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-md-2 p-0">
+                                                                    <div class="icon-label">
+                                                                        <i class="fas fa-exclamation-circle"
+                                                                            style="color: #ffdd88;"></i>
+                                                                        <span class="small"><strong>entre 6 e 8
+                                                                                meses</strong></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-md-2 p-0">
+                                                                    <div class="icon-label">
+                                                                        <i class="fas fa-exclamation-circle"
+                                                                            style="color: #5d75b0;"></i>
+                                                                        <span class="small"><strong>entre 3 e 6
+                                                                                meses</strong></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-md-2 p-0">
+                                                                    <div class="icon-label">
+                                                                        <i class="fas fa-exclamation-circle"
+                                                                            style="color: #b794ff;"></i>
+                                                                        <span class="small"><strong>menos de 2
+                                                                                meses</strong></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-12 col-md-2 p-0">
+                                                                    <div class="icon-label">
+                                                                        <span class="small"><strong><u>Status no
+                                                                                    período: </u>
+                                                                            </strong></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col p-0">
+                                                                    <div class="icon-label">
+                                                                        <span class="small"><strong>P = Permanente,
+                                                                                C = Colaborador</strong></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-12 col-md-2 p-0">
+                                                                    <div class="icon-label">
+                                                                        <span class="small"><strong><u>Fórmula para
+                                                                                    IndProdArt: </u>
+                                                                            </strong></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col p-0">
+                                                                    <div class="icon-label">
+                                                                        <span class="small"
+                                                                            id="formula_indprod_docente"><strong></strong></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
+                                            <div class="card-body" style="width: auto;">
+                                                <div class="row">
+                                                    <div class="col-xl-7 col-lg-7 p-2">
+                                                        <div class="card">
+                                                            <div class="table-responsive fs-6 fw-normal"
+                                                                style="padding: 24px;color: var(--bs-secondary-text-emphasis);width: auto;max-width: none;height: 100%;max-height: 798px;">
+                                                                <table class="table table-hover table-sm"
+                                                                    style="font-size: 11px;">
+                                                                    <thead style="width: 602.312px;">
+                                                                        <tr style="width: 553.312px;">
+                                                                            <th
+                                                                                style="width: 70%;text-align: right;padding-right: 12px;max-width: none;min-width: auto;">
+                                                                                Docente</th>
+                                                                            <th
+                                                                                style="text-align: center;width: 9%;min-width: 9%;max-width: none;">
+                                                                                IndProdArt</th>
+                                                                            <th
+                                                                                style="text-align: center;width: 9%;min-width: 9%;max-width: none;">
+                                                                                Status</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody id="tbody-lista-profs"
+                                                                        style="color: var(--bs-secondary-text-emphasis);">
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-5 col-lg-5 p-2" id="row-infoprof">
+                                                        <div class="card mb-4"
+                                                            style="max-width: none;width: auto;height: auto;">
+                                                            <div class="card-body" style="height: auto;width: auto;">
+                                                                <h6 class="text-primary card-title fw-bold m-0"
+                                                                    id="nome-prof" style="padding-bottom: 12px;">
+                                                                    Informações
+                                                                    do docente</h6>
+                                                                <h1 class="text-secondary card-subtitle fw-bold m-0"
+                                                                    style="font-size: 12px;padding-bottom: 12px;">
+                                                                    Orientações Concluídas (FONTE:
+                                                                    Sucupira)</h1>
+                                                                <div class="row">
+                                                                    <div class="col" style="padding-right: 6px;">
+                                                                        <div class="card"
+                                                                            style="height: 204.375px;width: auto;">
+                                                                            <div class="card-body"
+                                                                                style="height: 268.375px;">
+                                                                                <h4 class="small fw-bold"
+                                                                                    style="font-size: 16px;color: var(--bs-primary-text-emphasis);padding-bottom: 6px;">
+                                                                                    Mestrado<span class="float-end"
+                                                                                        id="qdade-orientados-mestrado">--</span>
+                                                                                </h4>
+                                                                                <h4 class="small fw-bold"
+                                                                                    style="font-size: 11px;">
+                                                                                    Dentro do
+                                                                                    prazo<span class="float-end"
+                                                                                        id="span-mestrado-dentro">0%</span>
+                                                                                </h4>
+                                                                                <div class="progress mb-4">
+                                                                                    <div class="progress-bar bg-primary"
+                                                                                        aria-valuenow="0"
+                                                                                        aria-valuemin="0"
+                                                                                        aria-valuemax="100"
+                                                                                        id="pb-mestrado-dentro"
+                                                                                        style="width: 0%;">
+                                                                                        <span
+                                                                                            class="visually-hidden">0%</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <h4 class="small fw-bold"
+                                                                                    style="font-size: 11px;margin-top: -10px;">
+                                                                                    Fora do prazo<span class="float-end"
+                                                                                        id="span-mestrado-fora">0%</span>
+                                                                                </h4>
+                                                                                <div class="progress mb-4">
+                                                                                    <div class="progress-bar bg-danger"
+                                                                                        aria-valuenow="0"
+                                                                                        aria-valuemin="0"
+                                                                                        aria-valuemax="100"
+                                                                                        id="pb-mestrado-fora"
+                                                                                        style="width: 0%;">
+                                                                                        <span
+                                                                                            class="visually-hidden">0%</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <h4 class="small fw-bold"
+                                                                                    style="font-size: 11px;margin-top: -10px;">
+                                                                                    Desligados<span class="float-end"
+                                                                                        id="span-mestrado-desligado">0%</span>
+                                                                                </h4>
+                                                                                <div class="progress mb-4">
+                                                                                    <div class="progress-bar bg-warning"
+                                                                                        aria-valuenow="0"
+                                                                                        aria-valuemin="0"
+                                                                                        aria-valuemax="100"
+                                                                                        id="pb-mestrado-desligado"
+                                                                                        style="width: 0%;">
+                                                                                        <span
+                                                                                            class="visually-hidden">0%</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col" style="padding-left: 6px;">
+                                                                        <div class="card"
+                                                                            style="height: 204.375px;width: auto;">
+                                                                            <div class="card-body"
+                                                                                style="height: 268.375px;">
+                                                                                <h4 class="small fw-bold"
+                                                                                    style="font-size: 16px;color: var(--bs-primary-text-emphasis);padding-bottom: 6px;">
+                                                                                    Doutorado<span class="float-end"
+                                                                                        id="qdade-orientados-doutorado">--</span>
+                                                                                </h4>
+                                                                                <h4 class="small fw-bold"
+                                                                                    style="font-size: 11px;">
+                                                                                    Dentro do
+                                                                                    prazo<span class="float-end"
+                                                                                        id="span-doutorado-dentro">0%</span>
+                                                                                </h4>
+                                                                                <div class="progress mb-4">
+                                                                                    <div class="progress-bar bg-primary"
+                                                                                        aria-valuenow="0"
+                                                                                        aria-valuemin="0"
+                                                                                        aria-valuemax="100"
+                                                                                        id="pb-doutorado-dentro"
+                                                                                        style="width: 0%;">
+                                                                                        <span
+                                                                                            class="visually-hidden">0%</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <h4 class="small fw-bold"
+                                                                                    style="font-size: 11px;margin-top: -10px;">
+                                                                                    Fora do prazo<span class="float-end"
+                                                                                        id="span-doutorado-fora">0%</span>
+                                                                                </h4>
+                                                                                <div class="progress mb-4">
+                                                                                    <div class="progress-bar bg-danger"
+                                                                                        aria-valuenow="0"
+                                                                                        aria-valuemin="0"
+                                                                                        aria-valuemax="100"
+                                                                                        id="pb-doutorado-fora"
+                                                                                        style="width: 0%;">
+                                                                                        <span
+                                                                                            class="visually-hidden">0%</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <h4 class="small fw-bold"
+                                                                                    style="font-size: 11px;margin-top: -10px;">
+                                                                                    Desligados<span class="float-end"
+                                                                                        id="span-doutorado-desligado">0%</span>
+                                                                                </h4>
+                                                                                <div class="progress mb-4">
+                                                                                    <div class="progress-bar bg-warning"
+                                                                                        aria-valuenow="0"
+                                                                                        aria-valuemin="0"
+                                                                                        aria-valuemax="100"
+                                                                                        id="pb-doutorado-desligado"
+                                                                                        style="width: 0%;">
+                                                                                        <span
+                                                                                            class="visually-hidden">0%</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card mb-4"
+                                                            style="width: auto;max-width: none;height: auto;margin: 0px;margin-bottom: 0px;margin-top: -14px;">
+                                                            <div class="card-body"
+                                                                style="height: auto;max-height: 217px;padding-top: 12px;width: auto;">
+                                                                <div class="justify-content-between" id="text-qualis">
+                                                                    <small style="font-size: 12px;"></small>
+                                                                    <button class="btn btn-primary" type="button"
+                                                                        id="bt_verlattes">Currículo
+                                                                        Lattes</button>
+                                                                </div>
+                                                                <div class="justify-content-between" id="text-qualis">
+                                                                    <small style="font-size: 12px;"></small>
+                                                                    <button class="btn btn-primary" data-toggle="modal"
+                                                                        data-target="#modal_resumo_lattes" type="button"
+                                                                        id="bt_verresumo" hidden>Resumo</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card mb-4"
+                                                            style="width: auto;max-width: none;height: auto;margin-top: -14px;">
+                                                            <div class="card-body"
+                                                                style="height: 400px;max-height: 400px;">
+                                                                <h6 class="text-secondary card-subtitle fw-bold m-0"
+                                                                    style="font-size: 12px;padding-bottom: 0px;">
+                                                                    Produtos
+                                                                </h6><canvas class="chart-area"
+                                                                    id="chartprofessorsproductions"></canvas>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-8 col-lg-8">
+                                        <div class="card mb-4" id='col-profcat' style="height: 469px;">
+                                            <div class="card-header d-flex justify-content-between align-items-center">
+                                                <h6 id="modaltitlechartprofessorsbycategory"
+                                                    class="text-primary fw-bold m-0">Quantidade de Docentes por
+                                                    Categoria</h6>
+                                                <div class="dropdown no-arrow">
+                                                    <button class="btn btn-link btn-sm dropdown-toggle"
+                                                        aria-expanded="false" data-bs-toggle="dropdown" type="button"><i
+                                                            class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                                    <div
+                                                        class="dropdown-menu shadow dropdown-menu-end animated--fade-in">
+                                                        <p class="text-center dropdown-header">Opções:</p>
+                                                        <a class="dropdown-item open-chart-modal" href="#"
+                                                            data-value="chartprofessorsbycategory">&nbsp;Ampliar</a>
+                                                        <div class="dropdown-divider"></div>
+                                                        <a class="dropdown-item a-pointer"
+                                                            onclick="SaveChart('chartprofessorsbycategory')">&nbsp;<i
+                                                                class="fa fa-download"></i> Download gráfico</a>
+                                                        <a class="dropdown-item a-pointer"
+                                                            onclick="ExportToExcel('/api/dados/prp/geral/professores/ppg', 'chartprofessorsbycategory')">&nbsp;<i
+                                                                class="far fa-file-excel"></i> Exportar para
+                                                            .xlsx</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body" style="height: 172.5px;"><canvas class="chart-area"
+                                                    id="chartprofessorsbycategory"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-4 col-lg-4">
+                                        <div class="card mb-4" style="height: 469px;">
+                                            <div class="card-header d-flex justify-content-between align-items-center">
+                                                <div style="width: 100%;">
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-auto">
+                                                            <h6 id="modaltitlechartlattesupdate"
+                                                                class="text-primary fw-bold m-0">Quantidade de
+                                                                currículos Lattes
+                                                                desatualizados</h6>
+                                                        </div>
+                                                        <div class="col text-end">
+                                                            <div class="dropdown no-arrow">
+                                                                <button class="btn btn-link btn-sm dropdown-toggle"
+                                                                    aria-expanded="false" data-bs-toggle="dropdown"
+                                                                    type="button"><i
+                                                                        class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                                                <div
+                                                                    class="dropdown-menu shadow dropdown-menu-end animated--fade-in">
+                                                                    <p class="text-center dropdown-header">
+                                                                        Opções:</p>
+                                                                    <a class="dropdown-item open-chart-modal"
+                                                                        id="saveGraph-10" href="#"
+                                                                        data-value="chartlattesupdate">&nbsp;Ampliar</a>
+                                                                    <div class="dropdown-divider"></div>
+                                                                    <a class="dropdown-item a-pointer"
+                                                                        onclick="SaveChart('chartlattesupdate')">&nbsp;<i
+                                                                            class="fa fa-download"></i> Download
+                                                                        gráfico</a>
+                                                                    <a class="dropdown-item a-pointer"
+                                                                        onclick="ExportToExcel('/api/dados/prp/geral/docentes/lattesatualizacao', 'chartlattesupdate')">&nbsp;<i
+                                                                            class="far fa-file-excel"></i>
+                                                                        Exportar para .xlsx</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row justify-content-center" style="height: 397px;">
+                                                    <canvas class="chart-area" id="chartlattesupdate"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card mb-4">
+                                            <div class="card-header" style="width: 100%;">
+                                                <h5>Mapa de Coautorias</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <div id="links-graph"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card" style="height: auto;">
+                                            <div class="card-header">
+                                                <h5 class="mb-0">Rede de Colaboração</h5>
+                                            </div>
+                                            <div class="card-body" style="height: auto;width: auto;">
+                                                <select class="form-select" onChange="fetchGraph(this)"
+                                                    id="select-prof">
+
+                                                </select><br>
+
+                                                <p>Apresenta os relacionamentos entre
+                                                    coautores e artigos
+                                                    em comum. Este grafo evidencia comunidades de parcerias
+                                                    dentro do PPG.&nbsp;</p>
+                                                <div id="legend-graph"></div>
+                                                <div id="graph"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="projetos" role="tabpanel" aria-labelledby="projetos-tab">
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card mb-4">
+                                            <div class="card-header d-flex justify-content-between align-items-center">
+                                                <div style="width: 100%;">
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-auto">
+                                                            <h6 class="text-primary fw-bold m-0">Produção por
+                                                                Linha de Pesquisa (FONTE: Sucupira)</h6>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <sub style="font-size: 11px;">Sumariza a produção do
+                                                                PPG por linha de pesquisa no período
+                                                                indicado.</sub>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <table class="table">
+                                                        <tr class="text-center">
+                                                            <td>
+                                                                <div style="margin-top: 200px;">
+                                                                    <span><strong>Tipo de produção</strong></span>
+                                                                </div>
+                                                            </td>
+                                                            <td style="width: 800px;">
+                                                                <div id="chartresearchlinesdata"></div>
+                                                            </td>
+                                                            <td>
+                                                                <div style="margin-top: 200px;">
+                                                                    <span><strong>Linhas de pesquisa</strong></span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                                            <!--div class="card-body" style="min-width: 0;" id="chartresearchlinesdata">
+                                            </div-->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card mb-4">
+                                            <div class="card-header d-flex justify-content-between align-items-center">
+                                                <div style="width: 100%;">
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-auto">
+                                                            <h6 class="text-primary fw-bold m-0">Produção
+                                                                dos Projetos por Linha de Pesquisa (FONTE:
+                                                                Sucupira)</h6>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <sub style="font-size: 11px;">Relaciona projetos
+                                                                às linhas de pesquisa pelas produções
+                                                                geradas.</sub>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <table class="table">
+                                                        <tr class="text-center">
+                                                            <td>
+                                                                <div style="margin-top: 400px;">
+                                                                    <span><strong>Tipo de produção</strong></span>
+                                                                </div>
+                                                            </td>
+                                                            <td style="width: 800px;">
+                                                                <div id="chartprojectsresearchlinesdata"></div>
+                                                            </td>
+                                                            <td>
+                                                                <div style="margin-top: 400px;">
+                                                                    <span><strong>Linhas de pesquisa</strong></span
+                                                                        </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card mb-4">
+                                            <div class="card-header d-flex justify-content-between align-items-center">
+                                                <div style="width: 100%;">
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-auto">
+                                                            <h6 class="text-primary fw-bold m-0">
+                                                                Projetos dos Docentes do PPG (FONTE:
+                                                                Lattes)</h6>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <sub style="font-size: 11px;">Sumariza os
+                                                                projetos do PPG
+                                                                apresentando o tipo de discente
+                                                                participante, se houve produção
+                                                                realizada e o status do projeto no
+                                                                período indicado.</sub>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <table class="table">
+                                                        <tr class="text-center">
+                                                            <td>
+                                                                <div style="margin-top: 900px;">
+                                                                    <span><strong>Projetos</strong></span>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div id="chartprojectsdata"></div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="bancas" role="tabpanel" aria-labelledby="bancas-tab">
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card mb-4">
+                                            <div class="card-header d-flex justify-content-between align-items-center">
+                                                <div style="width: 100%;">
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-auto">
+                                                            <h6 class="text-primary fw-bold m-0">TCCs por
+                                                                Linha de Pesquisa (FONTE: Sucupira)</h6>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <sub style="font-size: 11px;">Sumariza a produção do
+                                                                PPG por linha de pesquisa no período
+                                                                indicado.</sub>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <table class="table">
+                                                        <tr class="text-center">
+                                                            <td>
+                                                                <div style="margin-top: 200px;">
+                                                                    <span><strong>TCC</strong></span>
+                                                                </div>
+                                                            </td>
+                                                            <td style="width: 800px;">
+                                                                <div id="charttccsresearchlinesdata"></div>
+                                                            </td>
+                                                            <td>
+                                                                <div style="margin-top: 200px;">
+                                                                    <span><strong>Linhas de pesquisa</strong></span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                                            <!--div class="card-body" style="min-width: 0;" id="chartresearchlinesdata">
+                                            </div-->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="row">
+                                        <div class="col-lg-6 mb-4" style="width: 100%;">
+                                            <div class="card" style="height: auto;">                                                
+                                                <div class="card-body" style="height: auto;width: auto;">
+                                                    <p style="padding-top: 10px;margin-bottom: 5px;" id="quantidade_bancas">Quantidade de bancas no período: </p>
+                                                    <p style="padding-top: 10px;margin-bottom: 5px;"id="quantidade_internos">Quantidade média de docentes internos por banca:</p>
+                                                    <p style="padding-top: 10px;" id="quantidade_externos">Quantidade média de participantes externos por banca:</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="div-bancas-externos">
+                                    <div class="row">
+                                        <div class="col-lg-6 mb-4" style="width: 100%;">
+                                            <div class="card" style="height: auto;">
+                                                <div class="card-header">
+                                                    <h5 class="mb-0">Participantes Externos</h5>
+                                                </div>
+                                                <div class="card-body" style="height: auto;width: auto;">
+                                                    
+                                                    <div>
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <div class="table-responsive">
+                                                                    <table class="table">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th><span class="table-light fw-bold">Pertencem a um PPG ?</span></th>
+                                                                                <th><span class="table-light fw-bold">Quantidade por categoria</span></th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td id="pertence_ppg_sim" class="table-primary">Sim: </td>
+                                                                                <td id="quantidade_permanentes" class="table-primary">Permanente: </td>
+                                                                            </tr>
+                                                                            <tr style="border-style: hidden;">
+                                                                                <td id="pertence_ppg_nao">Não: </td>
+                                                                                <td id="quantidade_colaboradores" class="table-primary">Colaborador: </td>
+                                                                            </tr>
+                                                                            <tr style="border-style: hidden;">
+                                                                                <td></td>
+                                                                                <td id="quantidade_visitantes" class="table-primary">Visitante: </td>
+                                                                            </tr>
+                                                                            
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col" style="border-radius: 5px;border: 1px solid var(--bs-focus-ring-color);margin: 8px;">
+                                                                <div class="table-responsive">
+                                                                    <table class="table">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th><span class="table-light fw-bold">Grau acadêmico dos participantes</span></th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody id="tabela_grau_academico">
+                                                                            
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col" style="border-radius: 5px;border: 1px solid var(--bs-focus-ring-color);margin: 8px;">
+                                                                <div class="table-responsive">
+                                                                    <table class="table">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th><span class="table-light fw-bold">País de origem</span></th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody id="tabela_pais_origem" >
+                                                                            
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col"  style="border-radius: 5px;border: 1px solid var(--bs-focus-ring-color);margin: 8px;">
+                                                                <div class="table-responsive">
+                                                                    <table class="table">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th><span class="table-light fw-bold">País de titulação</span></th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody id="tabela_pais_titulacao" >
+                                                                            
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col" style="border-radius: 5px;border: 1px solid var(--bs-focus-ring-color);margin: 8px;">
+                                                                <div class="table-responsive">
+                                                                    <table class="table">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th><span class="table-light fw-bold">Área de titulação</span></th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody id="tabela_area_titulacao">
+                                                                            
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+
+                                </div>
+
+
+
+
+                            </div>
+                            <div class="tab-pane fade" id="simulacao-indprod" role="tabpanel"
+                                aria-labelledby="simulacao-indprod-tab">
+
+                                <div class="row p-4" style="max-width: 100%;">
+                                    <div class="col" style="font-size: 11px;">
+                                        <div id="docentes-simulacao" class="container-fluid"
+                                            style="border:1px solid #cecece;">
+
+                                        </div>
+                                        <div id="indprods-simulacao" class="container-fluid" style="margin-top: 10px;">
+
+                                        </div>
+
+                                        <div class="container-fluid" style="margin-top: 10px;">
+                                            <a id="bt_altera_simulacoes" class="btn btn-primary btn-icon-split"
+                                                role="button"><span class="text-white-50 icon"><i
+                                                        class="fas fa-flag"></i></span><span
+                                                    class="text-white text">Confirma</span></a>
+                                            <span>Essa ação pode levar a uma demora na resposta.</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" id="row-simulacao-qualis">
+                                    <div class="col-xl-6 col-lg-6" id="col-simulacao-qualis">
+                                        <div class="card mb-4" style="height: 469px;">
+                                            <div class="card-header d-flex justify-content-between align-items-center">
+                                                <div style="width: 100%;">
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-auto">
+                                                            <h6 class="text-primary fw-bold m-0">Produções com
+                                                                Qualis</h6>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col"><sub style="font-size: 11px;">Este
+                                                                gráfico apresenta
+                                                                quantidade de artigos em periódicos (com qualis)
+                                                                dos docentes permanentes do programa.<br>A última coluna
+                                                                apresenta a produção coletada dos currículos
+                                                                Lattes.</sub></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body" style="height: 397px;">
+                                                <canvas class="chart-area"
+                                                    id="chartsimulacaoqualisproductions"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6" id="col-simulacao-indprod">
+                                        <div class="card mb-4" style="height: 469px;">
+                                            <div class="card-header d-flex justify-content-between align-items-center">
+                                                <div style="width: 100%;">
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-auto">
+                                                            <h6 class="text-primary fw-bold m-0">IndProd Artigos</h6>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col"><sub style="font-size: 11px;">Este
+                                                                gráfico apresenta
+                                                                o indProdArt
+                                                                comparado ao indProdArt médio de outros PPGs.<br>
+                                                                <span id="formula_indprod_simulacao">IndProdArt = (1*A1
+                                                                    + 0,875*A2 + 0,75*A3
+                                                                    + 0,625*A4 + 0,5*B1
+                                                                    + 0,375*B2 + 0,25*B3 + 0,125*B4)/DP</span></sub>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body" style="height: 397px;">
+                                                <canvas class="chart-area"
+                                                    id="chartsimulacaoindprodsproductions"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="table-responsive" style="text-align: center;">
+                                    <table class="table table-striped table-sm table-bordered">
+                                        <thead style="background: var(--bs-focus-ring-color);">
+                                            <tr style="background: var(--bs-focus-ring-color);">
+                                                <th style="background: #f8f9fc;color: var(--bs-blue);">Indicadores no
+                                                    período</th>
+                                                <th style="background: #f8f9fc;color: var(--bs-blue);">PPG</th>
+                                                <th style="background: #f8f9fc;color: var(--bs-blue);">Notas 3</th>
+                                                <th style="background: #f8f9fc;color: var(--bs-blue);">Notas 4</th>
+                                                <th style="background: #f8f9fc;color: var(--bs-blue);">Notas 5</th>
+                                                <th style="background: #f8f9fc;color: var(--bs-blue);">MG</th>
+                                                <th style="background: #f8f9fc;color: var(--bs-blue);">Sudeste</th>
+                                                <th style="background: #f8f9fc;color: var(--bs-blue);">Brasil</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="color: var(--bs-light-text-emphasis);">Média ponderada de
+                                                    indProdArt por DP</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 2</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 1<svg
+                                                        class="bi bi-arrow-up-short" xmlns="http://www.w3.org/2000/svg"
+                                                        width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16"
+                                                        style="color: var(--bs-blue);">
+                                                        <path fill-rule="evenodd"
+                                                            d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z">
+                                                        </path>
+                                                    </svg></td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 2<svg
+                                                        class="bi bi-arrow-down-short"
+                                                        xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                                        fill="currentColor" viewBox="0 0 16 16"
+                                                        style="color: var(--bs-red);">
+                                                        <path fill-rule="evenodd"
+                                                            d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z">
+                                                        </path>
+                                                    </svg></td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 1</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 2</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 1</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 2</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="color: var(--bs-light-text-emphasis);">Média ponderada de
+                                                    indProdArt com discentes e egressos por DP</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="color: var(--bs-light-text-emphasis);">Quantidade média de
+                                                    artigos A1 à A4 por DP</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="color: var(--bs-light-text-emphasis);">Quantidade média de
+                                                    artigos A1 à A4 por PPG</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="color: var(--bs-light-text-emphasis);">Quantidade média de
+                                                    artigos A1 à A4 com discentes e egressos por DP</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="color: var(--bs-light-text-emphasis);">Quantidade média de
+                                                    artigos A1 à A4 com discentes e egressos por PPG</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 3</td>
+                                                <td style="color: var(--bs-light-text-emphasis);">Cell 4</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div> -->
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <footer class="bg-white sticky-footer">
+                        <div class="container my-auto">
+                            <div class="text-center my-auto copyright"><span>Copyright © Sistema Tarrafa
+                                    2023</span>
+                            </div>
+                        </div>
+                    </footer>
+
+                </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i
+                        class="fas fa-angle-up"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabela cujo dados são importados para serem exportados posteriormente -->
+    <table id="chartTable" hidden>
+        <thead id="chartTableHead">
+
+        </thead>
+        <tbody id="chartTableBody">
+
+        </tbody>
+    </table>
+
+    <!-- Modal Charts (Único para todos) -->
+    <div class="modal fade" id="chartModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="modalTitle" class="text-primary fw-bold m-0"></h5>
+                </div>
+                <div id="modalBody" class="card-body">
+                    <!-- Gráfico aqui -->
+                </div>
+                <div id="modalFooter" class="modal-footer">
+                    <button id="closeChartModal" type="button" class="btn btn-secondary">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para currículo lates-->
+    <div class="modal fade" id="modal_resumo_lattes" tabindex="-1" role="dialog" aria-labelledby="modal_resumo_label"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal_resumo_label">Meu Modal de 80%</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div style="max-height: 70vh; overflow-y: auto;">
+                        <!-- Conteúdo do Modal -->
+                        <!-- Coloque aqui o conteúdo que deseja dentro do modal -->
+                        <!-- Se o conteúdo for longo, a barra de rolagem aparecerá automaticamente -->
+                        <!-- Por exemplo: -->
+                        <p>Conteúdo longo...</p>
+                        <p>Conteúdo longo...</p>
+                        <p>Conteúdo longo...</p>
+                        <p>Conteúdo longo...</p>
+                        <p>Conteúdo longo...</p>
+                        <p>Conteúdo longo...</p>
+                        <p>Conteúdo longo...</p>
+                        <p>Conteúdo longo...</p>
+                        <p>Conteúdo longo...</p>
+                        <p>Conteúdo longo...</p>
+                        <p>Conteúdo longo...</p>
+                        <p>Conteúdo longo...</p>
+                        <p>Conteúdo longo...</p>
+
+                        <!-- ... -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script SheetJS para exportar em .xlsx -->
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/default-passive-events"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://unpkg.com/topojson@3"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
+    <script src="https://unpkg.com/d3-array@1"></script>
+    <script src="https://unpkg.com/d3-collection@1"></script>
+    <script src="https://unpkg.com/d3-path@1"></script>
+    <script src="https://unpkg.com/d3-shape@1"></script>
+    <script src="https://unpkg.com/d3-sankey@0"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <!-- <script src="/assets/js/waitMe.js"></script> -->
+    <!-- <script src="assets/js/config.js"></script> -->
+    <script src="/assets/js/functions.js?v=1.0.0"></script>
+    <!-- <script src="/assets/js/theme.js"></script> -->
+    <!-- <script src="/assets/js/rSlider.min.js"></script> -->
+    <script type="module" src="/assets/js/scriptsppg.js?v=1.0.3"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <title>Login - Sistema Tarrafa</title>
+    <link rel="shortcut icon" href="assets/img/favicon/favicon_tarrafa.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/Nunito.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/css/legend.css">
+    <link rel="stylesheet" href="/assets/css/rSlider.min.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        #fixedDiv {
+            position: fixed; /* Set the position to fixed */
+            top: 240px; /* Stick to the top of the viewport */
+            left: -100px; /* Stick to the left of the viewport */
+            width: 500px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 22px;
+            background: #2b2d60;
+            color: var(--bs-body-bg);
+            transform: rotate(-46deg);
+            transform-origin: 0 0; /* Set the transform origin to the top-left corner */
+        }
+    </style>
+</head>
+
+<body style="display:flex; flex-direction:column; justify-content:center; min-height:100vh;">
+    <!--</body> style="background: url('/assets/img/backgrounds/fundo.png') center / cover no-repeat;;"-->
+    <!--no body style here-->
+
+    <div id="fixedDiv">
+        <span style="font-family: Nunito, sans-serif;">Versão Beta</span>
+    </div>
+
+    <div class="container" style="margin-top: -50px;">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-xl-6 col-lg-6">
+                <img src="assets/img/backgrounds/img_fundo_0000.png" class="img-fluid" alt="img_fundo_0000">
+            </div>
+            <div class="col-xl-6 col-lg-6" style="width: 450px; ">
+                <div class="card-body p-0">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6" style="width: 100%;">
+                            <div class="p-5">
+                                <div class="row text-center mb-4">
+                                    <img src="assets/img/icons/logo_tarrafa_text.png" alt="logo_tarrafa_text">
+                                </div>
+                                <div class="mb-3"><a class="btn btn-primary d-block w-100"
+                                    role="button" href="login.html">Acessar</a></div>
+                                <div class="row text-center">
+                                    <div class="col-xl-6 col-lg-6">
+                                        <a class="small" href="sobre.html"><i class="fa fa-info-circle mx-2"></i>Sobre o Tarrafa</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer
+        style="position: absolute; bottom: 10px; width: 100%; color: #acd4f4; font-family: Verdana, Geneva, Tahoma, sans-serif;">
+        <div class="container">
+            <p style="font-size: 10px; margin-bottom: 50px;">Copyright &copy; SISTEMA tarrafa 2023</p>
+
+            <div style="display: flex;">
+                <div>
+                    <img src="assets/img/icons/logo_ed.png" alt="logo_ed"
+                        style="width: 70px; transform: rotate(45deg); margin-top: -50px;">
+                </div>
+                <div>
+                    <h5 style=" margin-left: -25px;">Escritório de dados</h5>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!--Modals-->
+    <div class="modal fade" id="modalfirstlogin" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="text-primary fw-bold m-0">Primeiro acesso</h3>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!--Conteúdo aqui-->
+                <div class="col-lg-6" style="width: 100%;">
+                    <div class="p-5">
+                        <form id="firstAcessForm" class="user" autocomplete="off">
+                            <div class="input-group mb-2">
+                                <input class="form-control" id="CPF" type="text" placeholder="CPF" name="CPF" autocomplete="off" minlength="11" maxlength="11">
+                            </div>
+                            <div class="mb-4">
+                                <input class="form-control mb-2" id="IDlattes" type="text" placeholder="ID Lattes" name="IDlattes"
+                                    autocomplete="off" minlength="16" maxlength="16">
+                                <div id="first-acess-invalidation" class="input-invalidation"></div>
+                                <small>
+                                    <a data-toggle="collapse" href="#collapseIDlattes" role="button"
+                                        aria-expanded="false" aria-controls="collapseExample">Onde encontrar o ID do
+                                        Lattes?</a>
+                                </small>
+                            </div>
+                            <div id="collapseIDlattes" class="collapse mb-4">
+                                <div>
+                                    <p>
+                                        O ID do seu Lattes é uma sequência numérica encontrada na parte inicial
+                                        do seu currículo. É essa sequência que você deve inserir no formulário.
+                                    </p>
+                                    <p>
+                                        No caso da imagem mostrada, o ID Lattes do Professor Renê é: 5262545895128956
+                                    </p>
+                                </div>
+                                <picture><img class="img-fluid" src="/assets/img/utils/lattes.jpg"></picture>
+                            </div>
+                            <button class="btn btn-primary d-block w-100" type="submit">Verificar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalforgotpassword" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="text-primary fw-bold m-0">Recuperar senha</h3>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!--Conteúdo aqui-->
+                <div class="col-lg-6" style="width: 100%;">
+                    <div class="p-5">
+                        <div class="mb-4">
+                            <p>Informe o e-mail que foi utilizado no cadastro para que possamos enviar um link de
+                                recuperação de senha:</p>
+                        </div>
+                        <form id="forgotPasswordForm" class="user">
+                            <div class="mb-4">
+                                <input class="form-control mb-2" type="email" id="email" aria-describedby="emailHelp" placeholder="E-mail" name="email">
+                                <div id="forgot-password-validation" class="input-validation"></div>
+                                <div id="forgot-password-invalidation" class="input-invalidation"></div>
+                            </div>
+                            <button class="btn btn-primary d-block w-100" type="submit">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/default-passive-events"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    
+    <script src="assets/js/config.js?v=1.0.0"></script>
+    <script src="/assets/js/scriptslogin.js?v=1.0.0"></script>
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/rSlider.min.js"></script>
+
+    <script src="assets/js/script.js?v=1.0.0"></script>
+
+</body>
+
+</html>

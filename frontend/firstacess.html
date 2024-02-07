@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <title>Primeiro acesso - Sistema Tarrafa</title>
+    <link rel="shortcut icon" href="assets/img/favicon/favicon_tarrafa.ico" type="image/x-icon">
+ 
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/Nunito.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/css/legend.css">
+    <link rel="stylesheet" href="/assets/css/rSlider.min.css">
+    <link type="text/css" rel="stylesheet" href="/assets/css/waitMe.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body style="display:flex; flex-direction:column; justify-content:center; min-height:100vh;">
+
+    <div class="container">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-12 col-xl-10" style="width: 550px; ">
+                <div class="card shadow-lg o-hidden border-0 my-5">
+                    <div class="card-body p-0">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6" style="width: 100%;">
+                                <div class="p-5">
+                                    <div class="row mb-4">
+                                        <a id="logout" href="login.html"><i class="fas fa-sign-out-alt fa-flip-horizontal back" style="font-size: 40px;"></i></a>
+                                    </div>
+                                    <div class="text-center mb-3">
+                                        <h4 class="text-dark mb-4" style="font-size: 35px;">Bem-vindo ao <br>Sistema Tarrafa</h4>
+                                        <h4 class="text-muted">Registro</h4>
+                                    </div>
+                                    <form id="firstAcessRegisterForm" class="user" autocomplete="off">
+                                        <div id="email-obs-1" class="input-validation"></div>
+                                        <div class="input-group mb-2">
+                                            <input class="form-control" id="email" aria-describedby="emailHelp" placeholder="E-mail" name="username" autocomplete="off">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">@unimontes.br</div>
+                                            </div>
+                                        </div>
+                                        <div id="email-invalidation" class="input-invalidation"></div>
+                                        <div id="email-obs-2" class="mb-3">
+                                            <small id="emailHelp" class="form-text text-muted">* É obrigatório o uso de e-mail com domínio "@unimontes.br"</small>
+                                        </div>
+                                        <div class="mb-2">
+                                            <input class="form-control" type="password" id="password" placeholder="Senha" name="password" autocomplete="new-password" minlength="6">
+                                        </div>
+                                        <div class="mb-2">
+                                            <input class="form-control" type="password" id="confirmPassword" placeholder="Confirmar senha" name="password" autocomplete="new-password" minlength="6">
+                                        </div>
+                                        
+                                        <div id="password-invalidation" class="input-invalidation"></div>
+
+                                        <div class="mb-3">
+                                            <p><input type="checkbox" onclick="mostrarSenhas()"> Mostrar senhas</p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <button id="btnSubmit" class="btn btn-primary d-block w-100" type="submit">Cadastrar</button>
+                                        </div>
+                                        <hr>
+                                    </form>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center">
+        <p>Copyright &copy; SISTEMA tarrafa 2023</p>
+    </footer>
+    
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/default-passive-events"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="assets/js/config.js?v=1.0.0"></script>
+    <script src="/assets/js/scriptsfirstacess.js?v=1.0.0"></script>
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/rSlider.min.js"></script>
+    <script src="assets/js/functions.js?v=1.0.0"></script>
+
+    <script src="assets/js/script.js?v=1.0.0"></script>
+
+</body>
+
+</html>

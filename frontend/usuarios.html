@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Usuários - Sistema Tarrafa</title>
+    <link rel="shortcut icon" href="assets/img/favicon/favicon_tarrafa.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/Nunito.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/css/legend.css">
+    <link rel="stylesheet" href="/assets/css/rSlider.min.css">
+    <link type="text/css" rel="stylesheet" href="/assets/css/waitMe.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body id="page-top">
+    <div id="fixedDiv">
+        <span style="font-family: Nunito, sans-serif; padding-left: 50px;">Versão Beta</span>
+    </div>
+    <div id="wrapper">
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-expand bg-white shadow mb-4 topbar static-top navbar-light">
+                    <div class="container-fluid">
+                        <ul class="navbar-nav flex-nowrap">
+                            <li
+                                class="nav-item d-flex d-sm-flex d-lg-flex d-xl-flex align-items-center align-items-sm-center align-items-lg-center align-items-xl-center dropdown no-arrow mx-1">
+                                <span>
+                                    <a href="#" onclick="selectIndex(this)"><img
+                                            src="assets/img/icons/logo_tarrafa_text.png" alt="home" height="37"></a>
+                                </span>
+                                <div class="shadow dropdown-list dropdown-menu dropdown-menu-end"
+                                    aria-labelledby="alertsDropdown"></div>
+                            </li>
+                        </ul>
+
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item dropdown no-arrow mx-1" hidden>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
+                                        aria-expanded="false" data-bs-toggle="dropdown" href="#"><img
+                                            data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                            src="/assets/img/icons/capes.png" width="37" height="37"
+                                            title="Módulo Sucupira" /></a>
+                                    <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
+                                        <h6 class="dropdown-header">Módulo Sucupira</h6><a
+                                            class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="dropdown-list-image me-3"><img class="rounded-circle"
+                                                    src="/assets/img/avatars/avatar4.jpeg" />
+                                                <div class="bg-success status-indicator"></div>
+                                            </div>
+                                            <div class="fw-bold">
+                                                <div class="text-truncate"><span>Hi there! I am wondering if you can
+                                                        help me with a problem I&#39;ve been having.</span></div>
+                                                <p class="small text-gray-500 mb-0">Emily Fowler - 58m</p>
+                                            </div>
+                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="dropdown-list-image me-3"><img class="rounded-circle"
+                                                    src="/assets/img/avatars/avatar2.jpeg" />
+                                                <div class="status-indicator"></div>
+                                            </div>
+                                            <div class="fw-bold">
+                                                <div class="text-truncate"><span>I have the photos that you ordered last
+                                                        month!</span></div>
+                                                <p class="small text-gray-500 mb-0">Jae Chun - 1d</p>
+                                            </div>
+                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="dropdown-list-image me-3"><img class="rounded-circle"
+                                                    src="/assets/img/avatars/avatar3.jpeg" />
+                                                <div class="bg-warning status-indicator"></div>
+                                            </div>
+                                            <div class="fw-bold">
+                                                <div class="text-truncate"><span>Last month&#39;s report looks great, I
+                                                        am very happy with the progress so far, keep up the good
+                                                        work!</span></div>
+                                                <p class="small text-gray-500 mb-0">Morgan Alvarez - 2d</p>
+                                            </div>
+                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="dropdown-list-image me-3"><img class="rounded-circle"
+                                                    src="/assets/img/avatars/avatar5.jpeg" />
+                                                <div class="bg-success status-indicator"></div>
+                                            </div>
+                                            <div class="fw-bold">
+                                                <div class="text-truncate"><span>Am I a good boy? The reason I ask is
+                                                        because someone told me that people say this to all dogs, even
+                                                        if they aren&#39;t good...</span></div>
+                                                <p class="small text-gray-500 mb-0">Chicken the Dog · 2w</p>
+                                            </div>
+                                        </a><a class="dropdown-item text-center small text-gray-500" href="#">Show All
+                                            Alerts</a>
+                                    </div>
+                                </div>
+                                <div class="shadow dropdown-list dropdown-menu dropdown-menu-end"
+                                    aria-labelledby="alertsDropdown"></div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow mx-1" hidden>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
+                                        aria-expanded="false" data-bs-toggle="dropdown" href="#"><img
+                                            data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                            src="/assets/img/icons/lattes.png" width="36" height="36"
+                                            title="Módulo Lattes" /></a>
+                                    <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
+                                        <h6 class="dropdown-header">Módulo Lattes</h6><a
+                                            class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="me-3">
+                                                <div class="bg-primary icon-circle"><i
+                                                        class="fas fa-file-alt text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 12, 2019</span>
+                                                <p>A new monthly report is ready to download!</p>
+                                            </div>
+                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="me-3">
+                                                <div class="bg-success icon-circle"><i
+                                                        class="fas fa-donate text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 7, 2019</span>
+                                                <p>$290.29 has been deposited into your account!</p>
+                                            </div>
+                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="me-3">
+                                                <div class="bg-warning icon-circle"><i
+                                                        class="fas fa-exclamation-triangle text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 2, 2019</span>
+                                                <p>Spending Alert: We&#39;ve noticed unusually high spending for your
+                                                    account.</p>
+                                            </div>
+                                        </a><a class="dropdown-item text-center small text-gray-500" href="#">Show All
+                                            Alerts</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <div class="d-none d-sm-block topbar-divider"></div>
+                            <li class="nav-item">
+                                <div class="nav-item dropdown no-arrow">
+                                    <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown"
+                                        href="#">
+                                        <span class="d-none d-lg-inline me-2 text-gray-600 small"
+                                            id="nome-usuario">Usuário</span>
+                                        <img class="border rounded-circle img-profile" id="avatar-usuario"
+                                            src="/assets/img/avatars/avatar1.jpeg" />
+                                    </a>
+                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
+                                        <div id="menu">
+                                            
+                                        </div>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#" id="logout"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i> Logout</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="container-fluid">
+                    <h3 class="text-dark mb-4"><i class="fas fa-users-cog fa-sm fa-fw me-2 text-gray-400"></i> Usuários
+                    </h3>
+                </div>
+                <div class="container-fluid">
+                    
+
+                    <div class="mt-4">
+                        <div class="row">
+                            <h5 class="mb-0 text-primary">LISTA DE USUÁRIOS DO SISTEMA</h5>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-4">
+                                <form>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fa fa-search"></i></span>
+                                        <input id="search-users" class="form-control" type="text"
+                                            placeholder="Nome, ID Lattes ou E-mail">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 text-end">
+                                <button id="novoUsuario" class="btn btn-primary"><i class="fas fa-user-plus fa-sm"></i> Novo
+                                    usuário</button>
+                            </div>
+                        </div>
+                        <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                            aria-describedby="dataTable_info">
+                            <table class="table table-striped my-0" id="dataTable">
+                                <thead class="table-primary tableas">
+                                    <tr>
+                                        <th class="text-light-emphasis">NOME DO USUÁRIO</th>
+                                        <th class="text-light-emphasis">ID LATTES</th>
+                                        <th class="text-light-emphasis">E-MAIL</th>
+                                        <th class="text-light-emphasis text-center">PERFIL</th>
+                                        <th class="text-light-emphasis text-center">ATIVO</th>
+                                        <th class="text-light-emphasis text-center">AÇÕES</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody-users"></tbody>
+                                <tfoot class="table-primary">
+                                    <tr>
+                                        <th class="text-light-emphasis">NOME DO USUÁRIO</th>
+                                        <th class="text-light-emphasis">ID LATTES</th>
+                                        <th class="text-light-emphasis">E-MAIL</th>
+                                        <th class="text-light-emphasis text-center">PERFIL</th>
+                                        <th class="text-light-emphasis text-center">ATIVO</th>
+                                        <th class="text-light-emphasis text-center">AÇÕES</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright © Sistema Tarrafa 2023</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+
+    <!-- Modal Novo Usuário -->
+    <div class="modal fade" id="modalNovoUsuario" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Novo usuário</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <form id="cadastrar" type="submit">
+                    <div class="modal-body">
+                        <div id="cadastrarAlert"></div>
+                        <div class="mb-3">
+                            <label for="idLattes" class="form-label">ID Lattes:</label>
+                            <input id="idLattes" class="form-control" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label for="fullName" class="form-label">Nome completo:</label>
+                            <input id="fullName" class="form-control" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">E-mail:</label>
+                            <input id="email" class="form-control" type="email">
+                        </div>
+                        <div id="superuserForm"></div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button class="btn btn-primary">Cadastrar</button>
+                    </div>
+                </form>
+                <div>
+                    <p style="text-align: center;">A senha padrão do novo usuário é o ID Lattes!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Editar usuário -->
+    <div class="modal fade" id="modalEditarUsuario" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Editar usuário</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <form id="editar" type="submit">
+                    <div class="modal-body">
+                        <div id="editarAlert"></div>
+                        <div class="mb-3">
+                            <label for="editarIdLattes" class="form-label">ID Lattes:</label>
+                            <input id="editarIdLattes" class="form-control" type="text" disabled>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editarFullName" class="form-label">Nome completo:</label>
+                            <input id="editarFullName" class="form-control" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editarEmail" class="form-label">E-mail:</label>
+                            <input id="editarEmail" class="form-control" type="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Nova senha:</label>
+                            <div class="input-group flex-nowrap">
+                                <input id="password" class="form-control" type="password" disabled>
+                                <span class="input-group-text" id="addon-wrapping"><input id="checkboxPassword" data-toggle="tooltip" data-placement="left" title="Clique para editar" class="form-check-input" type="checkbox"></span>
+                            </div>
+                            <small><input class="form-check-input" type="checkbox" onclick="mostrarSenha()"> Mostrar senha</small>
+                        </div>
+                        <div id="superuserEditForm"></div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button class="btn btn-primary">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+     <!-- Modal confirmação de exclusão -->
+     <div id="modalConfirmacao" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title"><i class="bi bi-exclamation-triangle-fill text-warning"></i> ALERTA DE EXCLUSÃO</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p id="msgExclusao" class="text-start"></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button id="excluir" type="button" class="btn btn-danger">Excluir</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/default-passive-events"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="/assets/js/waitMe.js"></script>
+    <script src="assets/js/config.js?v=1.0.0"></script>
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/rSlider.min.js"></script>
+    <script src="/assets/js/functions.js?v=1.0.0"></script>
+    <script src="/assets/js/scriptsusuarios.js?v=1.0.7"></script>
+
+    <script src="assets/js/script.js?v=1.0.0"></script>
+
+</body>
+
+</html>

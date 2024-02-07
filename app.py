@@ -1,12 +1,12 @@
 from flask_login import LoginManager, login_user, login_required, current_user, logout_user
-from flask import Flask, request, redirect, url_for, render_template
+from flask import Flask, request, redirect, url_for, render_template 
 from flask_redis import FlaskRedis
 from redis import Redis
 from utils.crud import Crud_user
 from utils.schemas import MyForm, FormNewWuser, User
 
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="frontend", static_folder="frontend/assets")
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 app.config['REDIS_HOST'] = 'localhost'
@@ -34,7 +34,7 @@ def index():
     """
     Renderiza o template da página index
     """
-    return render_template("index.html")
+    return render_template("login.html")
 
 @app.route("/user/<user_id>")
 def wellcome_user(user_id):
@@ -43,6 +43,14 @@ def wellcome_user(user_id):
     """
     user = Crud_user.get_user_by_id(user_id)
     return f"Bem vindo, {user.name}"
+
+@app.route("/login-fastapi", methods = ['GET', 'POST'])
+def login_fastapi():
+    #print("Algo")
+    ret =  redirect(f"http://127.0.0.1:8000/api/dados/login/access-token/{request.form.get('username')}/{request.form.get('password')}")
+    
+    
+    return "Teste"
 
 @app.route("/login", methods = ['GET','POST'])
 def login_wtf():
