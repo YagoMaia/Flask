@@ -27,8 +27,15 @@ class User(UserMixin):
     """
     Classe do usuário
     """
-    def __init__(self, email = None, hash_password = None, name = None, id = None):
+    def __init__(self, idlattes, email, full_name, is_superuser:bool, is_admin:bool, id_ies, token = None):
+        self.idlattes = idlattes
         self.email = email
-        self.hash_password = hash_password
-        self.name = name
-        self.id = id
+        self.full_name = full_name
+        #self.is_active = is_active
+        self.is_superuser = is_superuser
+        self.is_admin = is_admin
+        self.id_ies = id_ies
+        #self.hash_password = hash_password
+        self.id = token
+        
+        

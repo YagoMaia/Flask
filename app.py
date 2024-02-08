@@ -1,17 +1,23 @@
 from flask_login import LoginManager, login_user, login_required, current_user, logout_user
-from flask import Flask, request, redirect, url_for, render_template 
+from flask import Flask, request, redirect, url_for, render_template, session
 from flask_redis import FlaskRedis
 from redis import Redis
 from utils.crud import Crud_user
 from utils.schemas import MyForm, FormNewWuser, User
+from flask_cors import CORS, cross_origin
+import requests
 
+HOST_FASTAPI = "http://localhost:8000"
 
 app = Flask(__name__, template_folder="frontend", static_folder="frontend/assets")
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+
 app.config['REDIS_HOST'] = 'localhost'
 app.config['REDIS_PORT'] = 6379
 app.config['REDIS_DB'] = 0
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 redis_client = FlaskRedis(app, decode_responses = True)
 
@@ -19,14 +25,14 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 @login_manager.user_loader
-def load_user(user_id):
+def load_user(user_token):
     """
     Função executada toda vez que uma página com annotation login_required é acessada
     
     Paramêtros:
         user_id: Id do usuário para ser verificado
     """
-    data_encode = redis_client.hgetall(f"User:{user_id}")
+    data_encode = redis_client.hgetall(f"User:{user_token}")
     return User(**data_encode)
 
 @app.route("/")
@@ -44,33 +50,53 @@ def wellcome_user(user_id):
     user = Crud_user.get_user_by_id(user_id)
     return f"Bem vindo, {user.name}"
 
-@app.route("/login-fastapi", methods = ['GET', 'POST'])
+@app.route("/login_fastapi", methods = ['POST'])
+@cross_origin(origin='*',headers=['Content-Type','Authorization'])
 def login_fastapi():
+    if request.method == "POST":
+        #request.headers.add('Access-Control-Allow-Origin', '*')
+        # ret = requests.get(f"http://localhost:8000/api/dados/login/access-token/{request.form.get('username')}/{request.form.get('password')}")
+        ret = requests.post(f"{HOST_FASTAPI}/api/dados/login/access-token", data={"username":request.form.get("username"), "password":request.form.get("password")})
+        data = ret.json()
+        data['user']['token'] = data['access_token']
+        redis_client.hset(f"User:{data['access_token']}", mapping = data['user'])
+        user = User(**data['user'])
+        login_user(user)
+        session['user'] = data['user']
+        #return redirect(url_for('protected'))
+        return data
+        #return redirect(f"http://127.0.0.1:8000/api/dados/login/access-token/{request.form.get('username')}/{request.form.get('password')}")
+        #a.headers
     #print("Algo")
-    ret =  redirect(f"http://127.0.0.1:8000/api/dados/login/access-token/{request.form.get('username')}/{request.form.get('password')}")
+    #ret =  redirect(f"http://127.0.0.1:8000/api/dados/login/access-token/{request.form.get('username')}/{request.form.get('password')}")
     
-    
-    return "Teste"
+    #return "Certo"
+    #return "Teste"
 
-@app.route("/login", methods = ['GET','POST'])
-def login_wtf():
-    """
-    Função responsável pelo login com o formulário WTF
-    """
-    form = MyForm()
-    if form.validate_on_submit():
-        row = Crud_user.verify_user(form.email.data, form.password.data)
-        if row:
-            redis_client.hset(f"User:{row['id']}", mapping = row)
-            user = User(**row)
-            login_user(user)
-            return redirect(url_for('protected'))
-        return render_template("login_wtf.html", form = form, alert = "Dados incorretos")
-    try:
-        name = current_user.name
-    except:
-        name = None
-    return render_template("login_wtf.html", form = form, name = name)
+
+@app.route("/home")
+@login_required
+def home():
+    return render_template("home.html", user = current_user)
+# @app.route("/login", methods = ['GET','POST'])
+# def login_wtf():
+#     """
+#     Função responsável pelo login com o formulário WTF
+#     """
+#     form = MyForm()
+#     if form.validate_on_submit():
+#         row = Crud_user.verify_user(form.email.data, form.password.data)
+#         if row:
+#             redis_client.hset(f"User:{row['id']}", mapping = row)
+#             user = User(**row)
+#             login_user(user)
+#             return redirect(url_for('protected'))
+#         return render_template("login_wtf.html", form = form, alert = "Dados incorretos")
+#     try:
+#         name = current_user.name
+#     except:
+#         name = None
+#     return render_template("login_wtf.html", form = form, name = name)
 
 @app.route("/protected")
 @login_required
@@ -151,7 +177,8 @@ def page_not_found(error):
     Função responsável por renderizar página de quando uma página não é encontrada
     """
     print(error)
-    return render_template("page_not_found.html"), 404
+    return "error"
+    #return render_template("sobre.html"), 404
 
 @app.route("/logout")
 def logout():

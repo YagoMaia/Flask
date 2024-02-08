@@ -14,7 +14,7 @@ $('#loginForm').on("submit", function (event) {
   const username = document.getElementById('username').value + document.getElementById('selectUniversidade').value;
   const password = document.getElementById('password').value;
 
-  axios.post('/login-fastapi', {
+  axios.post('/login_fastapi', {
     username: username,
     password: password
   }, {
@@ -28,7 +28,7 @@ $('#loginForm').on("submit", function (event) {
       if (response.data.avatar !== null)
         sessionStorage.setItem('avatar', response.data.avatar);
       else sessionStorage.setItem('avatar', '/assets/img/avatars/avatar1.jpeg');
-      sessionStorage.setItem('nome', response.data.nome)
+      sessionStorage.setItem('nome', response.data.user.full_name)
 
       window.sessionStorage.setItem('begin', 1);
 
